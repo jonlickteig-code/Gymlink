@@ -1,40 +1,77 @@
-/* Smooth transitions */
-@layer components {
-  .transition-smooth {
-    @apply transition-all duration-300 ease-in-out;
-  }
-
-  .transition-fast {
-    @apply transition-all duration-150 ease-in;
-  }
+* {
+  -webkit-tap-highlight-color: transparent;
 }
 
-/* Fade in animation */
 @keyframes fadeIn {
-  from {
-    opacity: 0;
-  }
-  to {
-    opacity: 1;
-  }
+  from { opacity: 0; }
+  to { opacity: 1; }
+}
+
+@keyframes slideInFromRight {
+  from { transform: translateX(100%); opacity: 0; }
+  to { transform: translateX(0); opacity: 1; }
+}
+
+@keyframes slideInFromBottom {
+  from { transform: translateY(100%); opacity: 0; }
+  to { transform: translateY(0); opacity: 1; }
+}
+
+@keyframes scaleIn {
+  from { transform: scale(0.9); opacity: 0; }
+  to { transform: scale(1); opacity: 1; }
+}
+
+@keyframes heartBeat {
+  0% { transform: scale(1); }
+  14% { transform: scale(1.15); }
+  28% { transform: scale(1); }
+  42% { transform: scale(1.15); }
+  70% { transform: scale(1); }
 }
 
 .animate-fade-in {
-  animation: fadeIn 0.3s ease-in-out;
+  animation: fadeIn 300ms ease-out forwards;
 }
 
-/* Slide up animation */
-@keyframes slideUp {
-  from {
-    opacity: 0;
-    transform: translateY(10px);
-  }
-  to {
-    opacity: 1;
-    transform: translateY(0);
-  }
+.animate-slide-in-from-right {
+  animation: slideInFromRight 300ms ease-out forwards;
 }
 
-.animate-slide-up {
-  animation: slideUp 0.3s ease-out;
+.animate-slide-in-from-bottom {
+  animation: slideInFromBottom 250ms ease-out forwards;
+}
+
+.animate-scale-in {
+  animation: scaleIn 200ms ease-out forwards;
+}
+
+.interactive-press {
+  transition: transform 150ms ease-out;
+}
+
+.interactive-press:active {
+  transform: scale(0.95);
+}
+
+.like-btn {
+  animation: heartBeat 0.5s ease-in-out;
+}
+
+.bookmark-btn {
+  animation: scaleIn 0.3s ease-out;
+}
+
+.smooth-scroll {
+  scroll-behavior: smooth;
+  -webkit-overflow-scrolling: touch;
+}
+
+.hide-scrollbar {
+  -ms-overflow-style: none;
+  scrollbar-width: none;
+}
+
+.hide-scrollbar::-webkit-scrollbar {
+  display: none;
 }
