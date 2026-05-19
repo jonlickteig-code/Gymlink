@@ -46,69 +46,67 @@ export default function App() {
         </div>
 
         {/* Content */}
-        <div style={{ paddingTop: '16px', paddingBottom: '24px' }}>
-          {activeTab === 'home' && (
-            <>
-              <PostCard
-                userName="Sarah Chen"
-                userAvatar="https://i.pravatar.cc/150?img=5"
-                timestamp="2h ago"
-                gym="Iron Temple Gym"
-                image="https://images.unsplash.com/photo-1534438327276-14e5300c3a48?w=800"
-                caption="New deadlift PR! 315lbs x 5 reps. Feeling strong today 💪"
-                initialLikes={247}
-              />
+        {activeTab === 'home' && (
+          <div style={{ paddingTop: '16px', paddingBottom: '24px' }}>
+            <PostCard
+              userName="Sarah Chen"
+              userAvatar="https://i.pravatar.cc/150?img=5"
+              timestamp="2h ago"
+              gym="Iron Temple Gym"
+              image="https://images.unsplash.com/photo-1534438327276-14e5300c3a48?w=800"
+              caption="New deadlift PR! 315lbs x 5 reps. Feeling strong today 💪"
+              initialLikes={247}
+            />
 
-              <AchievementCard
-                title="Iron Warrior"
-                description="Completed 100 strength training sessions"
-                xp={500}
-              />
+            <AchievementCard
+              title="Iron Warrior"
+              description="Completed 100 strength training sessions"
+              xp={500}
+            />
 
-              <PostCard
-                userName="Marcus Johnson"
-                userAvatar="https://i.pravatar.cc/150?img=12"
-                timestamp="4h ago"
-                gym="Apex Fitness Center"
-                image="https://images.unsplash.com/photo-1571019614242-c5c5dee9f50b?w=800"
-                caption="Leg day crushing it. No excuses."
-                initialLikes={189}
-              />
-            </>
-          )}
+            <PostCard
+              userName="Marcus Johnson"
+              userAvatar="https://i.pravatar.cc/150?img=12"
+              timestamp="4h ago"
+              gym="Apex Fitness Center"
+              image="https://images.unsplash.com/photo-1571019614242-c5c5dee9f50b?w=800"
+              caption="Leg day crushing it. No excuses."
+              initialLikes={189}
+            />
+          </div>
+        )}
 
-          {activeTab === 'explore' && (
-            <div style={{ padding: '80px 24px', textAlign: 'center' }}>
-              <div style={{ fontSize: '48px', marginBottom: '16px' }}>🗺️</div>
-              <h2 style={{ fontSize: '20px', fontWeight: 'bold', color: '#fafafa', marginBottom: '8px' }}>Explore Gyms</h2>
-              <p style={{ fontSize: '15px', color: 'rgba(163, 163, 163, 0.9)' }}>Discover gyms near you on the map</p>
-            </div>
-          )}
+        {activeTab === 'explore' && (
+          <div style={{ padding: '80px 24px', textAlign: 'center', color: '#fafafa' }}>
+            <div style={{ fontSize: '64px', marginBottom: '16px' }}>🗺️</div>
+            <h2 style={{ fontSize: '24px', fontWeight: 'bold', marginBottom: '8px' }}>Explore Gyms</h2>
+            <p style={{ color: 'rgba(163, 163, 163, 0.9)' }}>Discover gyms near you</p>
+          </div>
+        )}
 
-          {activeTab === 'post' && (
-            <div style={{ padding: '80px 24px', textAlign: 'center' }}>
-              <div style={{ fontSize: '48px', marginBottom: '16px' }}>📸</div>
-              <h2 style={{ fontSize: '20px', fontWeight: 'bold', color: '#fafafa', marginBottom: '8px' }}>Create Post</h2>
-              <p style={{ fontSize: '15px', color: 'rgba(163, 163, 163, 0.9)' }}>Share your workout progress</p>
-            </div>
-          )}
+        {activeTab === 'post' && (
+          <div style={{ padding: '80px 24px', textAlign: 'center', color: '#fafafa' }}>
+            <div style={{ fontSize: '64px', marginBottom: '16px' }}>➕</div>
+            <h2 style={{ fontSize: '24px', fontWeight: 'bold', marginBottom: '8px' }}>Create Post</h2>
+            <p style={{ color: 'rgba(163, 163, 163, 0.9)' }}>Share your workout</p>
+          </div>
+        )}
 
-          {activeTab === 'ranks' && (
-            <div style={{ padding: '80px 24px', textAlign: 'center' }}>
-              <div style={{ fontSize: '48px', marginBottom: '16px' }}>🏆</div>
-              <h2 style={{ fontSize: '20px', fontWeight: 'bold', color: '#fafafa', marginBottom: '8px' }}>Leaderboards</h2>
-              <p style={{ fontSize: '15px', color: 'rgba(163, 163, 163, 0.9)' }}>Compete with other athletes</p>
-            </div>
-          )}
+        {activeTab === 'ranks' && (
+          <div style={{ padding: '80px 24px', textAlign: 'center', color: '#fafafa' }}>
+            <div style={{ fontSize: '64px', marginBottom: '16px' }}>🏆</div>
+            <h2 style={{ fontSize: '24px', fontWeight: 'bold', marginBottom: '8px' }}>Leaderboards</h2>
+            <p style={{ color: 'rgba(163, 163, 163, 0.9)' }}>See top performers</p>
+          </div>
+        )}
 
-          {activeTab === 'profile' && (
-            <div style={{ padding: '80px 24px', textAlign: 'center' }}>
-              <div style={{ fontSize: '48px', marginBottom: '16px' }}>👤</div>
-              <h2 style={{ fontSize: '20px', fontWeight: 'bold', color: '#fafafa', marginBottom: '8px' }}>Your Profile</h2>
-              <p style={{ fontSize: '15px', color: 'rgba(163, 163, 163, 0.9)' }}>View your stats and achievements</p>
-            </div>
-          )}
-        </div>
+        {activeTab === 'profile' && (
+          <div style={{ padding: '80px 24px', textAlign: 'center', color: '#fafafa' }}>
+            <div style={{ fontSize: '64px', marginBottom: '16px' }}>👤</div>
+            <h2 style={{ fontSize: '24px', fontWeight: 'bold', marginBottom: '8px' }}>Profile</h2>
+            <p style={{ color: 'rgba(163, 163, 163, 0.9)' }}>Your stats and activity</p>
+          </div>
+        )}
 
         {/* Bottom Navigation */}
         <BottomNav activeTab={activeTab} setActiveTab={setActiveTab} />
