@@ -1,5 +1,5 @@
 import { useState } from 'react';
-import { Heart, MessageCircle, Bookmark, Home, Map, PlusSquare, BarChart3, User, Bell, MapPin } from 'lucide-react';
+import { Heart, MessageCircle, Bookmark, Home, Map, PlusSquare, BarChart3, User, Bell, MapPin, Camera, Image as ImageIcon, TrendingUp, Flame, Trophy, Award } from 'lucide-react';
 
 export default function App() {
   const [activeTab, setActiveTab] = useState('home');
@@ -45,7 +45,7 @@ export default function App() {
           </div>
         </div>
 
-        {/* Content */}
+        {/* HOME TAB */}
         {activeTab === 'home' && (
           <div style={{ paddingTop: '16px', paddingBottom: '24px' }}>
             <PostCard
@@ -76,35 +76,275 @@ export default function App() {
           </div>
         )}
 
+        {/* EXPLORE TAB */}
         {activeTab === 'explore' && (
-          <div style={{ padding: '80px 24px', textAlign: 'center', color: '#fafafa' }}>
-            <div style={{ fontSize: '64px', marginBottom: '16px' }}>🗺️</div>
-            <h2 style={{ fontSize: '24px', fontWeight: 'bold', marginBottom: '8px' }}>Explore Gyms</h2>
-            <p style={{ color: 'rgba(163, 163, 163, 0.9)' }}>Discover gyms near you</p>
+          <div style={{ paddingTop: '16px', paddingBottom: '24px' }}>
+            <div style={{ padding: '0 16px', marginBottom: '20px' }}>
+              <h2 style={{ fontSize: '20px', fontWeight: 'bold', color: '#fafafa', marginBottom: '8px' }}>Nearby Gyms</h2>
+              <p style={{ fontSize: '14px', color: 'rgba(163, 163, 163, 0.9)' }}>Discover gyms in your area</p>
+            </div>
+
+            <GymCard
+              name="Iron Temple Gym"
+              image="https://images.unsplash.com/photo-1534438327276-14e5300c3a48?w=800"
+              distance="0.5 mi"
+              followers={1234}
+              members={450}
+            />
+
+            <GymCard
+              name="Apex Fitness Center"
+              image="https://images.unsplash.com/photo-1571019614242-c5c5dee9f50b?w=800"
+              distance="1.2 mi"
+              followers={890}
+              members={320}
+            />
+
+            <GymCard
+              name="PowerHouse Athletics"
+              image="https://images.unsplash.com/photo-1540497077202-7c8a3999166f?w=800"
+              distance="2.1 mi"
+              followers={567}
+              members={210}
+            />
+
+            <GymCard
+              name="Summit Strength Lab"
+              image="https://images.unsplash.com/photo-1517836357463-d25dfeac3438?w=800"
+              distance="3.5 mi"
+              followers={2100}
+              members={780}
+            />
           </div>
         )}
 
+        {/* POST TAB */}
         {activeTab === 'post' && (
-          <div style={{ padding: '80px 24px', textAlign: 'center', color: '#fafafa' }}>
-            <div style={{ fontSize: '64px', marginBottom: '16px' }}>➕</div>
-            <h2 style={{ fontSize: '24px', fontWeight: 'bold', marginBottom: '8px' }}>Create Post</h2>
-            <p style={{ color: 'rgba(163, 163, 163, 0.9)' }}>Share your workout</p>
+          <div style={{ paddingTop: '24px', paddingBottom: '24px' }}>
+            <div style={{ padding: '0 16px', marginBottom: '24px' }}>
+              <h2 style={{ fontSize: '20px', fontWeight: 'bold', color: '#fafafa', marginBottom: '8px' }}>Create Post</h2>
+              <p style={{ fontSize: '14px', color: 'rgba(163, 163, 163, 0.9)' }}>Share your workout with the community</p>
+            </div>
+
+            <div style={{ padding: '0 16px', marginBottom: '24px' }}>
+              <div style={{
+                width: '100%',
+                aspectRatio: '4 / 5',
+                background: 'linear-gradient(135deg, rgba(36, 36, 36, 0.4), rgba(36, 36, 36, 0.6))',
+                borderRadius: '12px',
+                display: 'flex',
+                flexDirection: 'column',
+                alignItems: 'center',
+                justifyContent: 'center',
+                gap: '12px',
+                border: '2px dashed rgba(255, 255, 255, 0.1)',
+                cursor: 'pointer',
+                transition: 'all 0.2s'
+              }}>
+                <Camera style={{ width: '48px', height: '48px', color: 'rgba(163, 163, 163, 0.6)' }} strokeWidth={1.5} />
+                <div style={{ textAlign: 'center' }}>
+                  <p style={{ fontSize: '16px', fontWeight: 'bold', color: '#fafafa', marginBottom: '4px' }}>Add Photo</p>
+                  <p style={{ fontSize: '13px', color: 'rgba(163, 163, 163, 0.8)' }}>Tap to upload</p>
+                </div>
+              </div>
+            </div>
+
+            <div style={{ padding: '0 16px', marginBottom: '16px' }}>
+              <textarea
+                placeholder="Write a caption..."
+                style={{
+                  width: '100%',
+                  minHeight: '100px',
+                  backgroundColor: 'rgba(36, 36, 36, 0.6)',
+                  border: '1px solid rgba(255, 255, 255, 0.05)',
+                  borderRadius: '12px',
+                  padding: '12px',
+                  color: '#fafafa',
+                  fontSize: '15px',
+                  resize: 'none',
+                  fontFamily: 'inherit'
+                }}
+              />
+            </div>
+
+            <div style={{ padding: '0 16px', marginBottom: '16px' }}>
+              <div style={{
+                display: 'flex',
+                alignItems: 'center',
+                gap: '8px',
+                backgroundColor: 'rgba(36, 36, 36, 0.6)',
+                padding: '12px',
+                borderRadius: '12px',
+                border: '1px solid rgba(255, 255, 255, 0.05)'
+              }}>
+                <MapPin style={{ width: '20px', height: '20px', color: 'rgba(163, 163, 163, 0.9)' }} strokeWidth={2} />
+                <span style={{ fontSize: '14px', color: 'rgba(163, 163, 163, 0.9)' }}>Add location</span>
+              </div>
+            </div>
+
+            <div style={{ padding: '0 16px' }}>
+              <button style={{
+                width: '100%',
+                padding: '14px',
+                backgroundColor: '#ff6b35',
+                border: 'none',
+                borderRadius: '12px',
+                color: '#fafafa',
+                fontSize: '16px',
+                fontWeight: 'bold',
+                cursor: 'pointer',
+                transition: 'all 0.2s'
+              }}>
+                Share Post
+              </button>
+            </div>
           </div>
         )}
 
+        {/* LEADERBOARDS TAB */}
         {activeTab === 'ranks' && (
-          <div style={{ padding: '80px 24px', textAlign: 'center', color: '#fafafa' }}>
-            <div style={{ fontSize: '64px', marginBottom: '16px' }}>🏆</div>
-            <h2 style={{ fontSize: '24px', fontWeight: 'bold', marginBottom: '8px' }}>Leaderboards</h2>
-            <p style={{ color: 'rgba(163, 163, 163, 0.9)' }}>See top performers</p>
+          <div style={{ paddingTop: '16px', paddingBottom: '24px' }}>
+            <div style={{ padding: '0 16px', marginBottom: '20px' }}>
+              <h2 style={{ fontSize: '20px', fontWeight: 'bold', color: '#fafafa', marginBottom: '8px' }}>Top Performers</h2>
+              <p style={{ fontSize: '14px', color: 'rgba(163, 163, 163, 0.9)' }}>This week's rankings</p>
+            </div>
+
+            <LeaderboardItem
+              rank={1}
+              avatar="https://i.pravatar.cc/150?img=33"
+              name="Alex Rivera"
+              xp={12450}
+              isTop={true}
+            />
+
+            <LeaderboardItem
+              rank={2}
+              avatar="https://i.pravatar.cc/150?img=5"
+              name="Sarah Chen"
+              xp={11230}
+              isTop={true}
+            />
+
+            <LeaderboardItem
+              rank={3}
+              avatar="https://i.pravatar.cc/150?img=12"
+              name="Marcus Johnson"
+              xp={10890}
+              isTop={true}
+            />
+
+            <LeaderboardItem
+              rank={4}
+              avatar="https://i.pravatar.cc/150?img=27"
+              name="Emma Davis"
+              xp={9670}
+              isTop={false}
+            />
+
+            <LeaderboardItem
+              rank={5}
+              avatar="https://i.pravatar.cc/150?img=14"
+              name="James Wilson"
+              xp={8920}
+              isTop={false}
+            />
+
+            <LeaderboardItem
+              rank={6}
+              avatar="https://i.pravatar.cc/150?img=32"
+              name="Olivia Martinez"
+              xp={8450}
+              isTop={false}
+            />
+
+            <LeaderboardItem
+              rank={7}
+              avatar="https://i.pravatar.cc/150?img=58"
+              name="Chris Taylor"
+              xp={7890}
+              isTop={false}
+            />
+
+            <LeaderboardItem
+              rank={8}
+              avatar="https://i.pravatar.cc/150?img=47"
+              name="Sofia Anderson"
+              xp={7320}
+              isTop={false}
+            />
           </div>
         )}
 
+        {/* PROFILE TAB */}
         {activeTab === 'profile' && (
-          <div style={{ padding: '80px 24px', textAlign: 'center', color: '#fafafa' }}>
-            <div style={{ fontSize: '64px', marginBottom: '16px' }}>👤</div>
-            <h2 style={{ fontSize: '24px', fontWeight: 'bold', marginBottom: '8px' }}>Profile</h2>
-            <p style={{ color: 'rgba(163, 163, 163, 0.9)' }}>Your stats and activity</p>
+          <div style={{ paddingTop: '24px', paddingBottom: '24px' }}>
+            <div style={{ padding: '0 16px', marginBottom: '24px', textAlign: 'center' }}>
+              <img
+                src="https://i.pravatar.cc/150?img=68"
+                alt="Profile"
+                style={{
+                  width: '80px',
+                  height: '80px',
+                  borderRadius: '50%',
+                  objectFit: 'cover',
+                  margin: '0 auto 12px',
+                  border: '3px solid rgba(255, 107, 53, 0.3)'
+                }}
+              />
+              <h2 style={{ fontSize: '20px', fontWeight: 'bold', color: '#fafafa', marginBottom: '4px' }}>Jordan Smith</h2>
+              <p style={{ fontSize: '14px', color: 'rgba(163, 163, 163, 0.9)', marginBottom: '16px' }}>@jordansmith</p>
+
+              <div style={{ display: 'flex', gap: '8px', justifyContent: 'center', marginBottom: '16px' }}>
+                <div style={{
+                  backgroundColor: 'rgba(36, 36, 36, 0.6)',
+                  padding: '8px 16px',
+                  borderRadius: '8px',
+                  border: '1px solid rgba(255, 255, 255, 0.05)'
+                }}>
+                  <p style={{ fontSize: '18px', fontWeight: 'bold', color: '#fafafa', marginBottom: '2px' }}>127</p>
+                  <p style={{ fontSize: '11px', color: 'rgba(163, 163, 163, 0.8)' }}>Posts</p>
+                </div>
+                <div style={{
+                  backgroundColor: 'rgba(36, 36, 36, 0.6)',
+                  padding: '8px 16px',
+                  borderRadius: '8px',
+                  border: '1px solid rgba(255, 255, 255, 0.05)'
+                }}>
+                  <p style={{ fontSize: '18px', fontWeight: 'bold', color: '#fafafa', marginBottom: '2px' }}>2.4k</p>
+                  <p style={{ fontSize: '11px', color: 'rgba(163, 163, 163, 0.8)' }}>Followers</p>
+                </div>
+                <div style={{
+                  backgroundColor: 'rgba(36, 36, 36, 0.6)',
+                  padding: '8px 16px',
+                  borderRadius: '8px',
+                  border: '1px solid rgba(255, 255, 255, 0.05)'
+                }}>
+                  <p style={{ fontSize: '18px', fontWeight: 'bold', color: '#fafafa', marginBottom: '2px' }}>890</p>
+                  <p style={{ fontSize: '11px', color: 'rgba(163, 163, 163, 0.8)' }}>Following</p>
+                </div>
+              </div>
+            </div>
+
+            <div style={{ padding: '0 16px', marginBottom: '24px' }}>
+              <div style={{ display: 'grid', gridTemplateColumns: '1fr 1fr', gap: '12px' }}>
+                <StatCard icon={Flame} label="Streak" value="12 days" />
+                <StatCard icon={TrendingUp} label="XP" value="8,920" />
+                <StatCard icon={Trophy} label="Rank" value="#5" />
+                <StatCard icon={Award} label="Badges" value="24" />
+              </div>
+            </div>
+
+            <div style={{ padding: '0 16px', marginBottom: '16px' }}>
+              <h3 style={{ fontSize: '16px', fontWeight: 'bold', color: '#fafafa', marginBottom: '12px' }}>Recent Posts</h3>
+              <div style={{ display: 'grid', gridTemplateColumns: '1fr 1fr 1fr', gap: '4px' }}>
+                <ProfilePost image="https://images.unsplash.com/photo-1534438327276-14e5300c3a48?w=400" />
+                <ProfilePost image="https://images.unsplash.com/photo-1571019614242-c5c5dee9f50b?w=400" />
+                <ProfilePost image="https://images.unsplash.com/photo-1540497077202-7c8a3999166f?w=400" />
+                <ProfilePost image="https://images.unsplash.com/photo-1517836357463-d25dfeac3438?w=400" />
+                <ProfilePost image="https://images.unsplash.com/photo-1581009146145-b5ef050c2e1e?w=400" />
+                <ProfilePost image="https://images.unsplash.com/photo-1583454110551-21f2fa2afe61?w=400" />
+              </div>
+            </div>
           </div>
         )}
 
@@ -358,6 +598,151 @@ function AchievementCard({ title, description, xp }: any) {
           </div>
         </div>
       </div>
+    </div>
+  );
+}
+
+function GymCard({ name, image, distance, followers, members }: any) {
+  const [isFollowing, setIsFollowing] = useState(false);
+
+  return (
+    <div style={{ padding: '0 16px', marginBottom: '16px' }}>
+      <div style={{
+        position: 'relative',
+        backgroundColor: 'rgba(23, 23, 23, 0.6)',
+        borderRadius: '16px',
+        overflow: 'hidden',
+        border: '1px solid rgba(255, 255, 255, 0.05)'
+      }}>
+        <div style={{ position: 'relative', width: '100%', height: '160px' }}>
+          <img
+            src={image}
+            alt={name}
+            style={{ width: '100%', height: '100%', objectFit: 'cover' }}
+          />
+          <div style={{
+            position: 'absolute',
+            top: '12px',
+            right: '12px',
+            backgroundColor: 'rgba(10, 10, 10, 0.8)',
+            backdropFilter: 'blur(8px)',
+            padding: '4px 10px',
+            borderRadius: '8px',
+            fontSize: '13px',
+            fontWeight: 'bold',
+            color: '#fafafa',
+            border: '1px solid rgba(255, 255, 255, 0.1)'
+          }}>
+            {distance}
+          </div>
+        </div>
+
+        <div style={{ padding: '16px' }}>
+          <h3 style={{ fontSize: '16px', fontWeight: 'bold', color: '#fafafa', marginBottom: '8px' }}>{name}</h3>
+
+          <div style={{ display: 'flex', gap: '16px', marginBottom: '12px' }}>
+            <div>
+              <p style={{ fontSize: '12px', color: 'rgba(163, 163, 163, 0.8)', marginBottom: '2px' }}>Followers</p>
+              <p style={{ fontSize: '14px', fontWeight: 'bold', color: '#fafafa' }}>{followers.toLocaleString()}</p>
+            </div>
+            <div>
+              <p style={{ fontSize: '12px', color: 'rgba(163, 163, 163, 0.8)', marginBottom: '2px' }}>Members</p>
+              <p style={{ fontSize: '14px', fontWeight: 'bold', color: '#fafafa' }}>{members}</p>
+            </div>
+          </div>
+
+          <button
+            onClick={() => setIsFollowing(!isFollowing)}
+            style={{
+              width: '100%',
+              padding: '10px',
+              backgroundColor: isFollowing ? 'rgba(36, 36, 36, 0.8)' : '#ff6b35',
+              border: 'none',
+              borderRadius: '10px',
+              color: '#fafafa',
+              fontSize: '14px',
+              fontWeight: 'bold',
+              cursor: 'pointer',
+              transition: 'all 0.2s'
+            }}
+          >
+            {isFollowing ? 'Following' : 'Follow'}
+          </button>
+        </div>
+      </div>
+    </div>
+  );
+}
+
+function LeaderboardItem({ rank, avatar, name, xp, isTop }: any) {
+  return (
+    <div style={{
+      padding: '12px 16px',
+      marginBottom: '8px',
+      backgroundColor: isTop ? 'rgba(255, 107, 53, 0.05)' : 'transparent',
+      borderLeft: isTop ? '3px solid #ff6b35' : 'none'
+    }}>
+      <div style={{ display: 'flex', alignItems: 'center', gap: '12px' }}>
+        <div style={{
+          width: '32px',
+          textAlign: 'center',
+          fontSize: '16px',
+          fontWeight: 'bold',
+          color: isTop ? '#ff6b35' : 'rgba(163, 163, 163, 0.8)'
+        }}>
+          {rank <= 3 ? (rank === 1 ? '🥇' : rank === 2 ? '🥈' : '🥉') : rank}
+        </div>
+        <img
+          src={avatar}
+          alt={name}
+          style={{
+            width: '44px',
+            height: '44px',
+            borderRadius: '50%',
+            objectFit: 'cover',
+            border: isTop ? '2px solid rgba(255, 107, 53, 0.3)' : 'none'
+          }}
+        />
+        <div style={{ flex: 1 }}>
+          <p style={{ fontSize: '15px', fontWeight: 'bold', color: '#fafafa', marginBottom: '2px' }}>{name}</p>
+          <div style={{ display: 'flex', alignItems: 'center', gap: '4px' }}>
+            <span style={{ fontSize: '14px', color: '#ff6b35', fontWeight: 'bold' }}>{xp.toLocaleString()}</span>
+            <span style={{ fontSize: '12px', color: 'rgba(163, 163, 163, 0.8)' }}>XP</span>
+          </div>
+        </div>
+      </div>
+    </div>
+  );
+}
+
+function StatCard({ icon: Icon, label, value }: any) {
+  return (
+    <div style={{
+      backgroundColor: 'rgba(36, 36, 36, 0.6)',
+      padding: '16px',
+      borderRadius: '12px',
+      border: '1px solid rgba(255, 255, 255, 0.05)'
+    }}>
+      <Icon style={{ width: '20px', height: '20px', color: '#ff6b35', marginBottom: '8px' }} strokeWidth={2} />
+      <p style={{ fontSize: '18px', fontWeight: 'bold', color: '#fafafa', marginBottom: '2px' }}>{value}</p>
+      <p style={{ fontSize: '12px', color: 'rgba(163, 163, 163, 0.8)' }}>{label}</p>
+    </div>
+  );
+}
+
+function ProfilePost({ image }: any) {
+  return (
+    <div style={{
+      aspectRatio: '1',
+      backgroundColor: 'rgba(36, 36, 36, 0.6)',
+      overflow: 'hidden',
+      cursor: 'pointer'
+    }}>
+      <img
+        src={image}
+        alt="Post"
+        style={{ width: '100%', height: '100%', objectFit: 'cover' }}
+      />
     </div>
   );
 }
